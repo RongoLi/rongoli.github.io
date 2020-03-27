@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Redux之redux-thunk异步机制分析, CS,React">
-    <meta name="description" content="前言写该文档的目的是为了帮助刚接触react的developer快速了解react中的异步机制，通过对redux-thunk的源码分析能够加深你对action =&amp;gt; others =&amp;gt; reducer =&amp;gt; state的理">
+    <meta name="keywords" content="Git使用摘要, CS,React">
+    <meta name="description" content="Git使用总结用户信息配置$ git config --list [--local|worktree|global|system]                    #查看git配置信息
+$ git config --show-orig">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Redux之redux-thunk异步机制分析 | Rongo</title>
+    <title>Git使用摘要 | Rongo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,12 +273,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Redux之redux-thunk异步机制分析</h1>
+                    <h1 class="description center-align post-title">Git使用摘要</h1>
                 </div>
             </div>
         </div>
@@ -394,16 +395,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/react/">
-                                <span class="chip bg-color">react</span>
-                            </a>
-                        
-                            <a href="/tags/redux/">
-                                <span class="chip bg-color">redux</span>
-                            </a>
-                        
-                            <a href="/tags/redux-thunk/">
-                                <span class="chip bg-color">redux-thunk</span>
+                            <a href="/tags/Git/">
+                                <span class="chip bg-color">Git</span>
                             </a>
                         
                     </div>
@@ -414,8 +407,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                前端
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
                             </a>
                         
                     </div>
@@ -427,7 +420,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-15
+                    2019-07-09
                 </div>
                 
 
@@ -441,14 +434,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    821
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    3 分
                 </div>
                 
 				
@@ -464,113 +457,67 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>写该文档的目的是为了帮助刚接触react的developer快速了解react中的异步机制，通过对redux-thunk的源码分析能够加深你对action =&gt; <code>others</code> =&gt; reducer =&gt; state的理解。阅读此文档前，你需要对redux有一定的了解，可参考：<a href="http://cn.redux.js.org/" target="_blank" rel="noopener">Redux中文文档</a>or<a href="https://redux.js.org/introduction/getting-started" target="_blank" rel="noopener">Redux官方文档</a></p>
-<h3 id="redux-thunk-是什么？"><a href="#redux-thunk-是什么？" class="headerlink" title="redux-thunk 是什么？"></a>redux-thunk 是什么？</h3><p>redux-thunk是一个提供异步编程能力的中间件，通常改变state的方式：</p>
-<pre class=" language-js"><code class="language-js">action <span class="token operator">=</span><span class="token operator">></span> reducer <span class="token operator">=</span><span class="token operator">></span> state</code></pre>
-<p>这一系列的改变过程都是同步进行的，而这远远满足不了我们的实际开发需求，例如我们需要做如下的改变：</p>
-<pre class=" language-diff"><code class="language-diff"><span class="token deleted">- action => reducer => state</span>
-<span class="token inserted">+ action => fetch => reducer => state</span></code></pre>
-<p>在<code>action</code>到达<code>reducer</code>这个过程中完成网络请求，然后将请求的数据通过<code>reducer</code>更新<code>state</code>的数据。而<code>redux-thunk</code>就是提供这种异步的能力。</p>
-<h3 id="redux-thunk-怎么做到呢？"><a href="#redux-thunk-怎么做到呢？" class="headerlink" title="redux-thunk 怎么做到呢？"></a>redux-thunk 怎么做到呢？</h3><p>要想弄清楚它的来龙去脉，首先要看一下它的源码</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">createThunkMiddleware</span><span class="token punctuation">(</span>extraArgument<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> dispatch<span class="token punctuation">,</span> getState <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> next <span class="token operator">=</span><span class="token operator">></span> action <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> action <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token function">action</span><span class="token punctuation">(</span>dispatch<span class="token punctuation">,</span> getState<span class="token punctuation">,</span> extraArgument<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+                <h2 id="Git使用总结"><a href="#Git使用总结" class="headerlink" title="Git使用总结"></a>Git使用总结</h2><h3 id="用户信息配置"><a href="#用户信息配置" class="headerlink" title="用户信息配置"></a>用户信息配置</h3><pre class=" language-sh"><code class="language-sh">$ git config --list [--local|worktree|global|system]                    #查看git配置信息
+$ git config --show-origin user.name                                    #查看某条配置信息的源文件
+$ git config --global user.name glorylee                                #设置用户名
+$ git config --global user.email dennisglorylee@gmail.com               #设置用户邮箱
+$ git config --global alias.hist 'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short' #像这种比较长的git命令，可以通过别名设置来简化：git hist
+</code></pre>
+<h3 id="远程仓库创建-amp-变更提交"><a href="#远程仓库创建-amp-变更提交" class="headerlink" title="远程仓库创建&amp;变更提交"></a>远程仓库创建&amp;变更提交</h3><pre class=" language-sh"><code class="language-sh">$ git init                                  #创建本地仓库
+$ echo "# git-summary" >> README.md                      #创建说明
+$ git add README.md                             #添加本地文件
+$ git commit -m "first commit"                       #添加提交说明
+$ git commit -am "add and commit"                       #添加变更并提交
+$ git commit --amend                                       #修正上次提交            
+$ git remote add origin https://github.com/codeLee321/git-summary.git     #关联远程仓库
+$ git push --set-upstream origin master                  #将本地文件推向远程仓库
+$ git push -u origin master                         #效果同上
+$ git push -f                                #强推
+$ git branch --set-upstream-to=origin/dev dev                #指定本地dev分支与远程dev分支链接
+$ git remote                                #查看远程库的信息
+$ git remote -v                                #查看更多的远程库的信息
+$ git clone https://github.com/codeLee321/git-summary            #从远程仓库clone</code></pre>
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><p>1.创建/删除/合并分支</p>
+<pre class=" language-sh"><code class="language-sh">$ git checkout -b dev                             #-b参数表示创建并切换分支
+$ git branch                                #查看当前分支
+$ git checkout master                            #切到master分支
+$ git merge dev                                #将dev分支合并到当前分支
+$ git branch -d dev                             #删除dev分支
+$ git branch -D dev                             #强制删除dev分支
 
-    <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+#高版本git提供switch
+$ git switch -c dev                            #创建并切换分支
+$ git switch master                            #切到master分支</code></pre>
+<p>2.冲突解决</p>
+<pre class=" language-sh"><code class="language-sh">$ git status                                #查看当前分支状态以及文件冲突
+$ git log --graph --pretty=oneline --abbrev-commit            #查看合并记录
+$ git merge --no-ff -m "merge with no-ff" dev                #合并禁用Fast forward</code></pre>
+<p>3.保存/恢复分支变更</p>
+<pre class=" language-sh"><code class="language-sh">$ git stash                                #保存当前分支的变更
+$ git stash list                            #查看保存的列表
+$ git stash apply                            #恢复保存的变更，但是不删除stash中的内容
+$ git stash drop                            #删除stash中的内容
+$ git stash pop                                #恢复保存的变更，同时删除stash中的内容
 
-<span class="token keyword">const</span> thunk <span class="token operator">=</span> <span class="token function">createThunkMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-thunk<span class="token punctuation">.</span>withExtraArgument <span class="token operator">=</span> createThunkMiddleware<span class="token punctuation">;</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> thunk<span class="token punctuation">;</span></code></pre>
-<p>源码看上去非常精简,首先<code>createThunkMiddleware(extraArgument)</code>接收一个<code>extraArgument</code>参数，提供给developer自己管理额外的数据。该函数返回一个接收<code>{dispatch,getState}</code>对象的匿名函数，这里我将会在应用该中间件的地方详细解释这些参数是什么和怎么传递的。再看下一步，该匿名函数又返回一个接收参数为<code>next</code>的函数。继续下一步该函数又返回一个接收参数为<code>action</code>的函数，该函数内部判断<code>action</code>的类型为函数的时候，执行该<code>action</code>函数，否则该<code>action</code>作为<code>next</code>的参数执行<code>next</code>函数。</p>
-<p>如上就是核心部分的定义过程，该模块导出的thunk是执行<code>createThunkMiddleware()</code>后的函数，即返回接收<code>{ dispatch, getState }</code>对象的匿名函数，该返回函数对象扩充了一个<code>withExtraArgument</code>属性，并将该函数原型赋值给该属性，developer如果想做额外的数据管理可以通过<code>thunk.withExtraArgument(&#39;你的额外数据&#39;)</code>。以上就是redux-thunk的实现过程。</p>
-<h3 id="redux-thunk-如何工作的？"><a href="#redux-thunk-如何工作的？" class="headerlink" title="redux-thunk 如何工作的？"></a>redux-thunk 如何工作的？</h3><p>要弄清楚redux-thunk的工作过程，我们要结合一下它的使用场景分析，如下</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">import</span> thunkMiddleware <span class="token keyword">from</span> <span class="token string">'redux-thunk'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>createStore<span class="token punctuation">,</span>applyMiddleware<span class="token punctuation">,</span>compose<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> Immutable <span class="token keyword">from</span> <span class="token string">'immutable'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> rootReducer <span class="token keyword">from</span> <span class="token string">'./../Reducer/rootReducer'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> createStoreWithMiddleware <span class="token operator">=</span> <span class="token function">applyMiddleware</span><span class="token punctuation">(</span>thunkMiddleware<span class="token punctuation">)</span><span class="token punctuation">(</span>createStore<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">store</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> initialState <span class="token operator">=</span> Immutable<span class="token punctuation">.</span><span class="token function">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStoreWithMiddleware</span><span class="token punctuation">(</span>rootReducer<span class="token punctuation">,</span> initialState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> store<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>我们看到<code>applyMiddleware</code>处使用了<code>redux-thunk</code>，那么它内部是如何工作的呢？接下来我们需要看一下redux内部的<code>applyMiddleware</code>函数的源码实现：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">applyMiddleware</span><span class="token punctuation">(</span><span class="token operator">...</span>middlewares<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> createStore <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
-    <span class="token keyword">let</span> dispatch <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>
-        <span class="token string">'Dispatching while constructing your middleware is not allowed. '</span> <span class="token operator">+</span>
-          <span class="token string">'Other middleware would not be applied to this dispatch.'</span>
-      <span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">const</span> middlewareAPI <span class="token operator">=</span> <span class="token punctuation">{</span>
-      getState<span class="token punctuation">:</span> store<span class="token punctuation">.</span>getState<span class="token punctuation">,</span>
-      dispatch<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">const</span> chain <span class="token operator">=</span> middlewares<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>middleware <span class="token operator">=</span><span class="token operator">></span> <span class="token function">middleware</span><span class="token punctuation">(</span>middlewareAPI<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    dispatch <span class="token operator">=</span> <span class="token function">compose</span><span class="token punctuation">(</span><span class="token operator">...</span>chain<span class="token punctuation">)</span><span class="token punctuation">(</span>store<span class="token punctuation">.</span>dispatch<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      <span class="token operator">...</span>store<span class="token punctuation">,</span>
-      dispatch
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>接下来我们分析一下它是如何使用redux-thunk中间件的，首先<code>applyMiddleware(...middlewares)</code>接收中间件并返回一个接收<code>createStore</code>的函数，这一步在上面使用场景中有调用<code>applyMiddleware(thunkMiddleware)(createStore)</code>传进来的<code>middlewares</code>就是来自<code>redux-thunk</code>的<code>thunkMiddleware</code>，而<code>createStore</code>即来自<code>redux</code>。继续下一步，该函数又返回接收<code>...args</code>的函数，该部分的调用是在<code>createStoreWithMiddleware(rootReducer, initialState);</code>,该函数内部创建了一个<code>store</code>实例，并将<code>store.getState</code>和<code>dispatch</code>函数保存在<code>middlewareAPI</code>对象中，在<code>middlewares.map(...)</code>这一步，表示遍历所有的中间件并执行该中间件函数，所以我们的redux-thunk就是其中之一，执行部分如下：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> dispatch<span class="token punctuation">,</span> getState <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> next <span class="token operator">=</span><span class="token operator">></span> action <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> action <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token function">action</span><span class="token punctuation">(</span>dispatch<span class="token punctuation">,</span> getState<span class="token punctuation">,</span> extraArgument<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<p>传入的参数<code>{ dispatch, getState }</code>就是middlewareAPI对象。接下来你肯定好奇next是什么了，再看上面的<code>dispatch = compose(...chain)(store.dispatch)</code>，<code>compose</code>函数将所有的中间件聚合后传入<code>store.dispatch</code>参数，所以<code>next</code>就是<code>store.dispatch</code>。最终增强版的<code>dispatch</code>即为如下函数：</p>
-<pre class=" language-js"><code class="language-js">dispatch <span class="token operator">=</span> <span class="token punctuation">(</span>action<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> action <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token function">action</span><span class="token punctuation">(</span>dispatch<span class="token punctuation">,</span> getState<span class="token punctuation">,</span> extraArgument<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<p>当action为普通的对象类型时：执行<code>next(action)</code>，即<code>store.dispatch</code>。当为函数类型时：将<code>dispatch,getState,extraArgument</code>作为参数传入并执行该函数，回顾一下这些参数的来源。</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> middlewareAPI <span class="token operator">=</span> <span class="token punctuation">{</span>
-      getState<span class="token punctuation">:</span> store<span class="token punctuation">.</span>getState<span class="token punctuation">,</span>
-      dispatch<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">createThunkMiddleware</span><span class="token punctuation">(</span>extraArgument<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> dispatch<span class="token punctuation">,</span> getState <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> next <span class="token operator">=</span><span class="token operator">></span> action <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> action <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token function">action</span><span class="token punctuation">(</span>dispatch<span class="token punctuation">,</span> getState<span class="token punctuation">,</span> extraArgument<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>再看一下函数类型的的<code>action</code>使用场景</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">function</span> fetchData <span class="token punctuation">(</span>params<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> dispatch <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    services<span class="token punctuation">.</span><span class="token function">fetchComments</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span><span class="token string">'actionType'</span><span class="token punctuation">,</span>data<span class="token punctuation">:</span>res<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>需要注意的是<code>middlewareAPI</code>中<code>dispatch: (...args) =&gt; dispatch(...args)</code>后面被修改了，真正下发到<code>middleware</code>中的<code>dispatch</code>其实是<code>dispatch = compose(...chain)(store.dispatch)</code>处理后的，如下。</p>
-<pre class=" language-js"><code class="language-js">dispatch <span class="token operator">=</span> <span class="token punctuation">(</span>action<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> action <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token function">action</span><span class="token punctuation">(</span>dispatch<span class="token punctuation">,</span> getState<span class="token punctuation">,</span> extraArgument<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>原来<code>redux-thunk</code>所具有的异步能力是对<code>store.dispatch</code>进行了一层包装，将之前仅支持的<code>Plain Object</code>拓展成还可以支持<code>函数类型</code>的，如果是普通的对象则还使用原来的<code>store.dispatch</code>，如果是函数类型则执行该函数，将包装后的<code>dispatch</code>下发到该<code>action</code>的<code>内部作用域</code>。如上就是个人最近针对redux及redux-thunk异步能力的一些理解总结，如有理解不当或书写错误的地方欢迎交流指正。</p>
+#复制某次提交，注意：如果复制了这次变更再merge就会出现冲突
+#因为同时更改了相同的文件
+$ git cherry-pick 4c805e2                        #可以将提交变更直接复制到另一个分支上面</code></pre>
+<h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><pre class=" language-sh"><code class="language-sh">$ git reset --hard HEAD^                        #回退到上一次的提交版本
+$ git reset --hard 64b640d6c66088238e4fb6b01ae140e639bf0e6c        #回退到某次特定提交
+$ git reflog                                #记录每一次的命令
+$ git diff HEAD -- README.md                        #工作区与远程库README.md文件的区别
+$ git checkout -- README.md                        #撤销当前文件的修改
+$ git rm README.md                            #删除某个文件</code></pre>
+<h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><pre class=" language-sh"><code class="language-sh">$ git tag v1.0                                #打一个标签
+$ git tag v0.9 f52c633                            #给某次提交打上标签
+$ git tag                                #查看标签
+$ git tag -a v0.1 -m "version 0.1 released" 1094adb            #打标签系列操作
+$ git show v1.0                                #查看某个标签的描述信息
+$ git tag -d v0.1                            #删除某个标签
+$ git push origin :refs/tags/v0.9                    #执行此操作使上面的删除操作推到远程库
+$ git push origin v1.0                            #推送某个标签到远程
+$ git push origin --tags                        #一次性推送全部尚未推送到远程的本地标签</code></pre>
+<h3 id="文件跟踪"><a href="#文件跟踪" class="headerlink" title="文件跟踪"></a>文件跟踪</h3><pre class=" language-sh"><code class="language-sh">$ git log -p ./path         #跟踪某个文件的变更记录</code></pre>
 
             </div>
             <hr/>
@@ -596,7 +543,7 @@ thunk<span class="token punctuation">.</span>withExtraArgument <span class="toke
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://rongoli.cn/2019/05/15/redux-zhi-redux-thunk-yi-bu-ji-zhi-fen-xi/">http://rongoli.cn/2019/05/15/redux-zhi-redux-thunk-yi-bu-ji-zhi-fen-xi/</a>
+                    <a href="http://rongoli.cn/2019/07/09/git-shi-yong-zhai-yao/">http://rongoli.cn/2019/07/09/git-shi-yong-zhai-yao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -634,16 +581,8 @@ thunk<span class="token punctuation">.</span>withExtraArgument <span class="toke
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/react/">
-                                    <span class="chip bg-color">react</span>
-                                </a>
-                            
-                                <a href="/tags/redux/">
-                                    <span class="chip bg-color">redux</span>
-                                </a>
-                            
-                                <a href="/tags/redux-thunk/">
-                                    <span class="chip bg-color">redux-thunk</span>
+                                <a href="/tags/Git/">
+                                    <span class="chip bg-color">Git</span>
                                 </a>
                             
                         </div>
@@ -1072,9 +1011,61 @@ thunk<span class="token punctuation">.</span>withExtraArgument <span class="toke
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2019/07/09/git-shi-yong-zhai-yao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Git使用摘要">
+                        
+                        <span class="card-title">Git使用摘要</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Git使用总结用户信息配置$ git config --list [--local|worktree|global|system]                    #查看git配置信息
+$ git config --show-orig
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2019/06/15/ji-suan-ji-zu-cheng-yuan-li/">
                     <div class="card-image">
@@ -1096,9 +1087,9 @@ thunk<span class="token punctuation">.</span>withExtraArgument <span class="toke
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-06-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1116,64 +1107,6 @@ thunk<span class="token punctuation">.</span>withExtraArgument <span class="toke
                     
                     <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">
                         <span class="chip bg-color">计算机原理</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/05/15/redux-zhi-redux-thunk-yi-bu-ji-zhi-fen-xi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Redux之redux-thunk异步机制分析">
-                        
-                        <span class="card-title">Redux之redux-thunk异步机制分析</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            前言写该文档的目的是为了帮助刚接触react的developer快速了解react中的异步机制，通过对redux-thunk的源码分析能够加深你对action =&gt; others =&gt; reducer =&gt; state的理
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-05-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/react/">
-                        <span class="chip bg-color">react</span>
-                    </a>
-                    
-                    <a href="/tags/redux/">
-                        <span class="chip bg-color">redux</span>
-                    </a>
-                    
-                    <a href="/tags/redux-thunk/">
-                        <span class="chip bg-color">redux-thunk</span>
                     </a>
                     
                 </div>
@@ -1360,7 +1293,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">10.8k</span>&nbsp;字
+                class="white-color">11.6k</span>&nbsp;字
             
             
             
