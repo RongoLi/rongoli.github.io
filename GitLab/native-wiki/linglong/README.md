@@ -93,22 +93,58 @@ NSString *otpStr = [authToken genOTPWithLeftSeconds:&left];
 ```mermaid
 graph TB
     start(玲珑锁) --> index(进入主页面)
-    index --> bind{是否已完成设备绑定}
-    bind -- YES --> bindYes(已完成设备绑定)
-    bind -- NO --> bindNo(未进行设备绑定)
-    bindNo --> bindNew(绑定新设备)
+    index --> tokenRef{检查上次的TokenRef是否存在}
+    bindNew(绑定新设备)
     bindNew --> bindNew1(获取设备的UUID并存到钥匙串)
     bindNew1 --> bindNew2(通过设备的UUID换取SN APPKEY YOOE-KEY并存入到钥匙串)
     bindNew2 --> bindNew3(将上面拿到SN APPKEY YOOE-KEY使能yooe SDK)
     bindNew3 --> bindNew4(完成yooe SDK使能后将得到的TokenRef存储起来方便下起启动使用)
-    bindNew4 --> stop(启动完成)
-    bindYes --> tokenRef{检查上次的TokenRef是否存在}
+    bindNew4 --> checkTime(时间同步)
     tokenRef --YES--> tokenRefYes(TokenRef存在)
     tokenRef --NO--> tokenRefNo(TokenRef不存在)
     tokenRefYes --> initTokenRef(通过tokenRef初始化yooe SDK)
     initTokenRef --> checkTime(时间同步)
-    tokenRefNo --> checkKey{检查SN,APPKEY,YOOE-KEY}
+    checkTime --> stop(启动完成)
+    tokenRefNo --> checkKey{检查SN,APPKEY,YOOE-KEY是否存在}
     checkKey --YES-->previewUser(老用户覆盖安装)
-    previewUser --> bindNew2
+    previewUser --> bindNew3
     checkKey --NO-->bindNew
+```
+#### 2.账号管理
+账号管理分为两部分：金山通行证账号、WeGame账号
+账号登陆流程如下：
+```mermaid
+graph TB
+    start(添加账号) --> seasun(金山通行证)
+    start --> weGame(WeGame账号)
+    weGame --> injectJs(weGameSDK injectJs,登陆成功会发消息回来)
+    weGame --> loginUrl(获取web weGame登陆页面的URL)
+    injectJs --> reviveMsg(收到登陆成功)
+    loginUrl --> reviveMsg(收到登陆成功)
+    reviveMsg --> saveLoginData
+    seasun --> getCaptha(获取验证码)
+    getCaptha --> code0(0:验证码发送成功)
+    getCaptha --> code38(38:未实名认证)
+    getCaptha --> code201(201:未绑定手机)
+    code38 --> getCapthaError(获取验证码异常处理)
+    code201 --> getCapthaError(获取验证码异常处理)
+    code0 --> login(登陆)
+    login --> loginSuccess(登陆成功)
+    login --> loginError(登陆失败处理)
+    loginSuccess --> saveLoginData(保留登陆成功的账号和授权密钥)
+```
+
+账号绑定|解绑流程如下：
+```mermaid
+graph TB
+    start(账号) --> bind(绑定账号)
+    start(账号) --> unbind(解绑账号)
+    bind --> bindSuccess(0:绑定成功)
+    bind --> alreadyBind(22:已绑定过,需要解绑)
+    bind --> bindError(绑定出错处理)
+    alreadyBind --> unbind
+    unbind --> phoneChange{绑定的设备是否变更}
+    phoneChange --YES--> change(发送验证码确认)
+    phoneChange --NO--> unbindSuccess(解绑成功)
+    change --> unbindSuccess
 ```
