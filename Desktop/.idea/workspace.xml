@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="22bc4c62-ee9a-4dbf-9951-c122297ca7d3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/AppIcon.appiconset/UbIcon@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/AppIcon.appiconset/UbIcon@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/EmptyTableView/emptyRedpacket.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/EmptyTableView/emptyRedpacket.imageset/emptyRedpacket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_newPublish.imageset/01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_newPublish.imageset/3X01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_newPublish.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_showBill.imageset/02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_showBill.imageset/3X02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_showBill.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_tenYuan.imageset/03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_tenYuan.imageset/3X03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_main/main_tenYuan.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_my/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_my/my_cridit.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_my/my_cridit.imageset/my_cridit@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_my/my_cridit.imageset/my_cridit@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_my/my_service.imageset/2X.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_my/my_service.imageset/3X.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_my/my_service.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/Icon_other/icon_TenYuanArea.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/ResourceImage/getwinning.imageset/2X.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/ResourceImage/getwinning.imageset/3X.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/ResourceImage/getwinning.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/ResourceImage/moreImage.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/ResourceImage/zl_X.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/ResourceImage/zl_X.imageset/zl_X.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/ResourceImage/zl_X.imageset/zl_X@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/Utils/Category/UIImage+ZLPhotoLib.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/Utils/Category/UIImage+ZLPhotoLib.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/Utils/Category/UIView+ZLExtension.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/Utils/Category/UIView+ZLExtension.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhoto.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Models/ZLPhotoPickerBrowserPhoto.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Models/ZLPhotoPickerBrowserPhoto.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Models/ZLPhotoRect.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Models/ZLPhotoRect.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/ViewControllers/ZLPhotoPickerBrowserViewController+SignlePhotoBrowser.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/ViewControllers/ZLPhotoPickerBrowserViewController+SignlePhotoBrowser.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/ViewControllers/ZLPhotoPickerBrowserViewController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/ViewControllers/ZLPhotoPickerBrowserViewController.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Views/ZLPhotoPickerBrowserPhotoImageView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Views/ZLPhotoPickerBrowserPhotoImageView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Views/ZLPhotoPickerBrowserPhotoScrollView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Views/ZLPhotoPickerBrowserPhotoScrollView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Views/ZLPhotoPickerBrowserPhotoView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Views/ZLPhotoPickerBrowserPhotoView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Views/ZLPhotoPickerCustomToolBarView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoBrowser/Views/ZLPhotoPickerCustomToolBarView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_X.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_X@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_camera@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_example6.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_icon_image_no@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_icon_image_no@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_icon_image_yes@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_icon_image_yes@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_iconfont-tianjia.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_lock@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_nav_delete_btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_nav_delete_btn@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_paizhao.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_paizhao@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_pc_circle_placeholder@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_shanguangdeng.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_shanguangdeng2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_shanguangdeng2@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_shanguangdeng@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_video-play@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_video-play@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_video.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_video@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_xiang.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoLib.bundle/zl_xiang@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Models/ZLPhotoAssets.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Models/ZLPhotoAssets.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Models/ZLPhotoPickerDatas.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Models/ZLPhotoPickerDatas.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Models/ZLPhotoPickerGroup.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Models/ZLPhotoPickerGroup.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/UIViewController+Alert.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/UIViewController+Alert.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/ZLNavigationController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/ZLNavigationController.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/ZLPhotoPickerAssetsViewController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/ZLPhotoPickerAssetsViewController.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/ZLPhotoPickerGroupViewController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/ZLPhotoPickerGroupViewController.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/ZLPhotoPickerViewController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/ViewControllers/ZLPhotoPickerViewController.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerCollectionView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerCollectionView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerCollectionViewCell.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerCollectionViewCell.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerFooterCollectionReusableView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerFooterCollectionReusableView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerGroupTableViewCell.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerGroupTableViewCell.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerImageView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPicker/Views/ZLPhotoPickerImageView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ShowDeals/ZLPhotoLib/ZLPhotoPickerCommon.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/WinRecord/ZTLogisticsViewController.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/WinRecord/ZTLogisticsViewController.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ZTCustomerServiceVC.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Module/My/Controllers/ZTCustomerServiceVC.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Vendor/DACircularProgress/DACircularProgressView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Vendor/DACircularProgress/DACircularProgressView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Vendor/DACircularProgress/DALabeledCircularProgressView.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Vendor/DACircularProgress/DALabeledCircularProgressView.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/ZTUB.entitlements" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZTUB/ZTUB/ZTUB.pch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZTUB/ZTUB.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ZTUB/ZTUB.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZTUB/ZTUB.xcodeproj/xcuserdata/tony.xcuserdatad/xcschemes/ZTUB.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/ZTUB/ZTUB.xcodeproj/xcuserdata/tony.xcuserdatad/xcschemes/ZTUB.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZTUB/ZTUB/AppDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZTUB/ZTUB/AppDelegate.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZTUB/ZTUB/Base.lproj/LaunchScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZTUB/ZTUB/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ZTUB/ZTUB/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store-client/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/store-client/pages/index/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store-client/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/store-client/project.config.json" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Desktop$first.coverage" NAME="first Coverage Results" MODIFIED="1554292334164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/first.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/ZTUB" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/first.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-1342" />
+    <option name="y" value="-59" />
+    <option name="width" value="1341" />
+    <option name="height" value="837" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="first" type="PythonConfigurationType" factoryName="Python">
+      <module name="Desktop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python2.7" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/first.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22bc4c62-ee9a-4dbf-9951-c122297ca7d3" name="Default Changelist" comment="" />
+      <created>1533001879891</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1533001879891</updated>
+      <workItem from="1554272416166" duration="282000" />
+      <workItem from="1554273137083" duration="2242000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2524000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1342" y="-59" width="1341" height="837" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11701309" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.9006928" weight="0.32885906" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.09930716" side_tool="true" visible="true" weight="0.32885906" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="R Graphics" order="4" />
+      <window_info anchor="right" id="R Packages" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/first.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
